@@ -1,4 +1,4 @@
-package baekjoon10797;
+﻿package baekjoon10797;
 
 /* [문제]
 서울시는 6월 1일부터 교통 혼잡을 막기 위해서 자동차 10부제를 시행한다. 자동차 10부제는 자동차 번호의 일의 자리 숫자와
@@ -18,13 +18,17 @@ package baekjoon10797;
 주어진 날짜와 자동차의 일의 자리 숫자를 보고 10부제를 위반하는 차량의 대수를 출력한다.
 */
 
+/*
+아주 기본적인 카운트 알고리즘으로 처음 주어진 숫자와 이어 입력되는 5개의 숫자들 중 같은 수의 횟수를 세면 된다.
+*/
+
 import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
-		int  cont = 0;
-		for(int i = 0, y = scn.nextInt(); i<5; i++)
-			if(y==scn.nextInt())
+		int  cont = 0;					// 카운트 변수의 초기값은 0으로..
+		for(int i = 0, y = scn.nextInt(); i<5; i++) 	// 날짜 또한 한번 쓰고 버리는 수이므로 반복문의 지역변수로 사용
+			if(y==scn.nextInt())			// 입력 받은 날짜와 5개의 차랑 번호를 비교.. 같으면 카운트 1증가
 				cont++;
 		System.out.println(cont);
 		scn.close();
