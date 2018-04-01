@@ -1,17 +1,25 @@
 package baekjoon1764;
 
-/* [ë¬¸ì œ]
-ê¹€ì§„ì˜ì´ ë“£ë„ ëª»í•œ ì‚¬ëŒì˜ ëª…ë‹¨ê³¼, ë³´ë„ ëª»í•œ ì‚¬ëŒì˜ ëª…ë‹¨ì´ ì£¼ì–´ì§ˆ ë•Œ, ë“£ë„ ë³´ë„ ëª»í•œ ì‚¬ëŒì˜ ëª…ë‹¨ì„ êµ¬í•˜ëŠ” í”„ë¡œê·¸ë¨ì„ ì‘ì„±í•˜ì‹œì˜¤.
+/* [¹®Á¦]
+±èÁø¿µÀÌ µèµµ ¸øÇÑ »ç¶÷ÀÇ ¸í´Ü°ú, º¸µµ ¸øÇÑ »ç¶÷ÀÇ ¸í´ÜÀÌ ÁÖ¾îÁú ¶§, µèµµ º¸µµ ¸øÇÑ »ç¶÷ÀÇ ¸í´ÜÀ» ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
 */
 
-/* [ì…ë ¥]
-ì²«ì§¸ ì¤„ì— ë“£ë„ ëª»í•œ ì‚¬ëŒì˜ ìˆ˜ N, ë³´ë„ ëª»í•œ ì‚¬ëŒì˜ ìˆ˜ Mì´ ì£¼ì–´ì§„ë‹¤. ì´ì–´ì„œ ë‘˜ì§¸ ì¤„ë¶€í„° Nê°œì˜ ì¤„ì— ê±¸ì³ ë“£ë„ ëª»í•œ ì‚¬ëŒì˜ ì´ë¦„ê³¼,
-N+2ì§¸ ì¤„ë¶€í„° ë³´ë„ ëª»í•œ ì‚¬ëŒì˜ ì´ë¦„ì´ ìˆœì„œëŒ€ë¡œ ì£¼ì–´ì§„ë‹¤. ì´ë¦„ì€ ë„ì–´ì“°ê¸° ì—†ì´ ì˜ì–´ ì†Œë¬¸ìë¡œë§Œ ì´ë£¨ì–´ì§€ë©°, ê·¸ ê¸¸ì´ëŠ” 20 ì´í•˜ì´ë‹¤.
-N, Mì€ 500,000 ì´í•˜ì˜ ìì—°ìˆ˜ì´ë‹¤.
+/* [ÀÔ·Â]
+Ã¹Â° ÁÙ¿¡ µèµµ ¸øÇÑ »ç¶÷ÀÇ ¼ö N, º¸µµ ¸øÇÑ »ç¶÷ÀÇ ¼ö MÀÌ ÁÖ¾îÁø´Ù. ÀÌ¾î¼­ µÑÂ° ÁÙºÎÅÍ N°³ÀÇ ÁÙ¿¡ °ÉÃÄ µèµµ ¸øÇÑ »ç¶÷ÀÇ ÀÌ¸§°ú,
+N+2Â° ÁÙºÎÅÍ º¸µµ ¸øÇÑ »ç¶÷ÀÇ ÀÌ¸§ÀÌ ¼ø¼­´ë·Î ÁÖ¾îÁø´Ù. ÀÌ¸§Àº ¶ç¾î¾²±â ¾øÀÌ ¿µ¾î ¼Ò¹®ÀÚ·Î¸¸ ÀÌ·ç¾îÁö¸ç, ±× ±æÀÌ´Â 20 ÀÌÇÏÀÌ´Ù.
+N, MÀº 500,000 ÀÌÇÏÀÇ ÀÚ¿¬¼öÀÌ´Ù.
 */
 
-/* [ì¶œë ¥]
-ë“£ë³´ì¡ì˜ ìˆ˜ì™€ ê·¸ ëª…ë‹¨ì„ ì‚¬ì „ìˆœìœ¼ë¡œ ì¶œë ¥í•œë‹¤.
+/* [Ãâ·Â]
+µèº¸ÀâÀÇ ¼ö¿Í ±× ¸í´ÜÀ» »çÀü¼øÀ¸·Î Ãâ·ÂÇÑ´Ù.
+*/
+
+/*
+ÀÔ·ÂµÇ´Â µÎ ¹®ÀÚ¿­ ÁıÇÕÀÇ ±³ÁıÇÕÀÇ Å©±â¿Í ¿ä¼Ò¸¦ »çÀü¼øÀ¸·Î Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ´Â ¹®Á¦·Î Áßº¹À» Çô¿ëÇÏÁö ¾Ê´Â HashSetÀ» ÀÌ¿ëÇÏ¸é ½±°Ô
+±³ÁıÇÕÀ» ±¸ÇÒ ¼ö ÀÖÀ¸¸ç ArrayÀÇ sort ÇÔ¼ö·Î Á¤·Ä±îÁö °£´ÜÈ÷ ±¸ÇöÇÒ ¼ö ÀÖ´Ù.
+
+HashSetÀÇ add ÇÔ¼ö´Â Áßº¹µÈ °ªÀÌ ÀÔ·ÂµÇ¸é false¸¦ ¹İÈ¯ÇÏ¸ç ÀúÀåµÇÁö ¾Ê´Â´Ù. ÀÌ¸¦ if¹®ÀÇ Á¶°Ç¹®À¸·Î »ç¿ëÇÏ¸é ¾ÆÁÖ ½±°Ô ¹®Á¦ÇØ°áÀÌ °¡´É
+ÇÏ¸ç ÆÇº°µÈ µèº¸Àâ HashSetÀÇ °ªÀ» Array·Î ºÒ·¯¿Í sort ÈÄ ±æÀÌ¿Í ¿ä¼Ò¸¦ Ãâ·ÂÇÏ¸é ³¡ÀÌ´Ù.
 */
 
 import java.io.BufferedReader;
@@ -20,25 +28,34 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.StringTokenizer;
+
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		// ¿¬¼ÓÇÏ¿© ÀÔ·ÂµÇ´Â µèµµ ¸øÇÑ »ç¶÷°ú º¸µµ ¸øÇÑ »ç¶÷ÀÇ ÁıÇÕÀ» ±¸ºĞÇÏ±â À§ÇØ °¢ ÁıÇÕÀÇ Å©±â¸¦ ÀÔ·Â ¹Ş´Â´Ù.
 		int noHear = Integer.parseInt(st.nextToken()) , noSee = Integer.parseInt(st.nextToken());
-		HashSet<String> noSet = new HashSet<>();
-		HashSet<String> resultSet = new HashSet<>();
-		String temp;
-		for(int i = 0; i<noHear; i++)
+		  
+		HashSet<String> noSet = new HashSet<>();		// ¿¬¼ÓÇÏ¿© ¹®ÀÚ¿­À» ÀÔ·Â¹ŞÀ¸¸ç µèº¸ÀâÀ» ÆÇº°ÇÒ HashSet
+		HashSet<String> resultSet = new HashSet<>();	// ÆÇº°µÈ µèº¸ÀâÀ» ÀúÀåÇÒ HashSet
+		String temp;	// ¹®ÀÚ¿­À» ÀÔ·Â¹Ş¾Æ noSet¿¡¼­ ÆÇº°µÈ µèº¸ÀâÀ» resultSetÀ¸·Î ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
+		
+		for(int i = 0; i<noHear; i++)	// µèµµ ¸øÇÑ »ç¶÷ÀÇ Å©±â ¸¸Å­ ¹®ÀÚ¿­À» noSet¿¡ addÇÑ´Ù.
 			noSet.add(br.readLine());
-		for(int i = 0; i<noSee; i++)
-			if (noSet.add((temp=br.readLine()))){}
+		
+		for(int i = 0; i<noSee; i++) {	// µèµµ ¸øÇÑ »ç¶÷ÀÌ ÀúÀåµÈ noSet¿¡ º¸µµ ¸øÇÑ »ç¶÷À¸ Å©±â ¸¸Å­ ¹®ÀÚ¿­À» addÇÑ´Ù.
+			// temp¿¡ ÀÔ·Â ¹Ş¾Æ noSet¿¡ addÇÏ¸ç ¸¸¾à Áßº¹µÈ °ªÀÌ¶ó¸é ÀúÀåµÇÁö ¾Ê°í false¸¦ ¹İÈ¯ÇÏ¿© else¹®ÀÌ ½ÇÇàµÈ´Ù.
+			if (noSet.add((temp=br.readLine()))){}	
 			else
-				resultSet.add(temp);
-		System.out.println(resultSet.size());
-		Object[] obj = resultSet.toArray();
-		Arrays.sort(obj);
-		for(Object s : obj)
-			System.out.println((String)s);
+				resultSet.add(temp);		// noSet¿¡ ÀúÀåµÇÁö ¾Ê´Â´Ù¸é Áßº¹µÈ °ªÀÌ¹Ç·Î resultSet¿¡ ÀúÀåÇÑ´Ù.
+		}
+		
+		System.out.println(resultSet.size());	// Ãâ·Â Çü½Ä¿¡ ¸ÂÃç resultSetÀÇ Å©±â(µèº¸ÀâÀÇ ¼ö)¸¦ Ãâ·ÂÇÑ´Ù.
+		Object[] obj = resultSet.toArray();		// SetÀÇ Æ¯¼º »ó ¿ä¼Ò¸¦ Ãâ·ÂÇÏ±â À§ÇØ¼± Array·Î ¿Å°Ü¾ß ÇÑ´Ù.
+		Arrays.sort(obj);	// Array¿¡¼­ Á¦°øÇÏ´Â sort ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¸é Á¤·ÄÀ» ½±°Ô ÇÒ ¼ö ÀÖ´Ù.
+		for(Object s : obj)	// for each ¸¦ È°¿ëÇÏ¸é ½±°Ô ArrayÀÇ ¿ä¼Ò¸¦ Ãâ·ÂÇÒ ¼ö ÀÖ´Ù.
+			System.out.println((String)s);	// Object ÀÌ¹Ç·Î StringÀ¸·Î Çüº¯È¯ÇÏ¿© Ãâ·ÂÇØ¾ß ÇÑ´Ù.
 		br.close();
 	}
 }
